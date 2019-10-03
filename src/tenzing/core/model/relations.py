@@ -260,13 +260,18 @@ def register_ordinal_relations():
     def check_consecutive(l):
         return sorted(l) == list(range(min(l), max(l) + 1))
 
-    def is_ordinal(s):
-        unique_values = s.unique()
+    def is_ordinal_int(s):
+        unique_values = s.unique().to_list()
         return check_consecutive(unique_values) and 2 < len(unique_values) < 10 and 1 in unique_values
+
+    def is_ordinal_str(s):
+        unique_values = s.str.lower().unique().to_list()
+        return 'a' in unique_values and check_consecutive(list(map(ord, unique_values)))
 
     relations = [
         model_relation(tenzing_ordinal, tenzing_categorical, inferential=False),
-        model_relation(tenzing_ordinal, tenzing_integer, relationship=is_ordinal, inferential=True)
+        model_relation(tenzing_ordinal, tenzing_integer, relationship=is_ordinal_int, inferential=True),
+        model_relation(tenzing_ordinal, tenzing_string, relationship=is_ordinal_str, inferential=True),
     ]
     return relations
 
