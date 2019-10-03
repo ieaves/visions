@@ -246,8 +246,16 @@ def register_ip_relations():
 
 
 def register_ordinal_relations():
+    def check_consecutive(l):
+        return sorted(l) == list(range(min(l), max(l) + 1))
+
+    def is_ordinal(s):
+        unique_values = s.unique()
+        return check_consecutive(unique_values) and 2 < len(unique_values) < 10 and 1 in unique_values
+
     relations = [
         model_relation(tenzing_ordinal, tenzing_categorical, inferential=False),
+        model_relation(tenzing_ordinal, tenzing_integer, is_ordinal, inferential=True)
     ]
     return relations
 
