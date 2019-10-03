@@ -162,8 +162,9 @@ def register_bool_relations():
         _boolean_maps = [
             {"true": True, "false": False},
             {"y": True, "n": False},
-            {"j": True, "n": False},
             {"yes": True, "no": False},
+            {"j": True, "n": False},
+            {"ja": True, "nee": False},
         ]
 
         def __init__(self):
