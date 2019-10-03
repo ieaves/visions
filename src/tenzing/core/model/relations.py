@@ -242,6 +242,7 @@ def register_ip_relations():
             tenzing_ip,
             tenzing_string,
             test_utils.coercion_test(lambda s: s.apply(ip_address)),
+            inferential=True,
         ),
     ]
     return relations
