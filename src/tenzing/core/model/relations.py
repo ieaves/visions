@@ -191,6 +191,12 @@ def register_bool_relations():
             transformer=sb_relation.map_string_to_bool,
             inferential=True,
         ),
+        model_relation(
+            tenzing_bool,
+            tenzing_integer,
+            relationship=lambda s: set(s.unique()) == {0, 1},
+            inferential=True,
+        )
     ]
     return relations
 
