@@ -15,18 +15,11 @@ class tenzing_integer(tenzing_model):
 
     @classmethod
     def contains_op(cls, series: pd.Series) -> bool:
-        if pdt.is_integer_dtype(series):
-            return True
-        elif pdt.is_float_dtype(series):
-            # Need this additional check because it's an Option[Int] which in
-            # pandas land will result in integers with decimal trailing 0's
-            try:
-                return series.eq(series.astype(int)).all()
-            except (ValueError, TypeError):
-                return False
-        else:
-            return False
+        return pdt.is_integer_dtype(series)
 
     @classmethod
     def cast_op(cls, series: pd.Series, operation=None) -> pd.Series:
-        return series.astype("Int64")
+        try:
+            return series.astype(int)
+        except TypeError:
+            return series.astype("Int64")

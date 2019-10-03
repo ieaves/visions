@@ -17,7 +17,7 @@ def register_integer_relations():
             tenzing_integer,
             tenzing_float,
             test_utils.coercion_equality_test(lambda s: s.astype(int)),
-            inferential=False,
+            inferential=True,
         ),
         model_relation(
             tenzing_integer,
@@ -26,13 +26,6 @@ def register_integer_relations():
             lambda s: s.astype(float).astype("Int64"),
             inferential=True,
         ),
-        model_relation(
-            tenzing_float,
-            tenzing_complex,
-            lambda s: all(np.imag(s.values) == 0),
-            lambda s: s.astype(float),
-            inferential=True
-        )
     ]
 
     return relations
@@ -50,6 +43,13 @@ def register_float_relations():
         model_relation(
             tenzing_float, tenzing_string, test_string_is_float, inferential=True
         ),
+        model_relation(
+            tenzing_float,
+            tenzing_complex,
+            lambda s: all(np.imag(s.values) == 0),
+            lambda s: s.astype(float),
+            inferential=True
+        )
     ]
 
     return relations
@@ -89,6 +89,7 @@ def register_path_relations():
                 )
             else:
                 return True
+        # TODO: Too broad exception clause
         except Exception:
             return False
 

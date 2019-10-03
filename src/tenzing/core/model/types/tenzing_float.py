@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 
 from tenzing.core.model.models import tenzing_model
-from tenzing.core.model.types.tenzing_integer import tenzing_integer
 
 
 class tenzing_float(tenzing_model):
@@ -15,7 +14,7 @@ class tenzing_float(tenzing_model):
 
     @classmethod
     def contains_op(cls, series: pd.Series) -> bool:
-        return pdt.is_float_dtype(series) and series not in tenzing_integer
+        return pdt.is_float_dtype(series)
 
     @classmethod
     def cast_op(cls, series: pd.Series, operation=None) -> bool:
