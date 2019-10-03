@@ -187,6 +187,14 @@ def register_bool_relations():
             sb_relation.map_string_to_bool,
             inferential=True,
         ),
+        model_relation(
+            tenzing_bool,
+            tenzing_object,
+            test_utils.coercion_equality_test(
+                lambda s: pd.to_numeric(s).astype("Bool")
+            ),
+            inferential=True,
+        ),
     ]
     return relations
 

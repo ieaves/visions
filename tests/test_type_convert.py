@@ -32,7 +32,7 @@ def get_series_map():
         (tenzing_ip, tenzing_string, ["ip_str"]),
         (tenzing_url, tenzing_string, ["str_url"]),
         (tenzing_path, tenzing_string, ["path_series_windows_str", "path_series_linux_str"]),
-        # (tenzing_bool, tenzing_object, ["bool_nan_series"])
+        (tenzing_bool, tenzing_object, ["bool_nan_series"])
     ]
 
     return series_map
