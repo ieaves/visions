@@ -17,6 +17,7 @@ class tenzing_geometry(tenzing_model):
         # from shapely.geometry.base import BaseGeometry
         # return series.apply(lambda x: issubclass(type(x), BaseGeometry)).all()
         # The below raises `TypeError: data type "geometry" not understood`
+        import geopandas
         return series.dtype == 'geometry'
 
     @classmethod
