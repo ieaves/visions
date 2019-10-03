@@ -108,6 +108,12 @@ def register_datetime_relations():
             inferential=True,
             relationship=test_utils.coercion_test(lambda s: pd.to_datetime(s)),
         ),
+        model_relation(
+            tenzing_datetime,
+            tenzing_integer,
+            inferential=True,
+            relationship=test_utils.coercion_test(lambda s: pd.to_datetime(s.astype(str))),
+        ),
         model_relation(tenzing_datetime, tenzing_object, inferential=False),
         model_relation(tenzing_datetime, tenzing_generic, inferential=False),
     ]
