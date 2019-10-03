@@ -138,14 +138,17 @@ def register_geometry_relations():
             logging.disable(logging.NOTSET)
         return result
 
+    def string_to_geometry(series):
+        from shapely import wkt
+        return pd.Series([wkt.loads(value) for value in series])
+
     relations = [
         model_relation(
-            tenzing_geometry, tenzing_string, string_is_geometry, inferential=True
+            tenzing_geometry, tenzing_string, string_is_geometry, transformer=string_to_geometry, inferential=True
         ),
         model_relation(
             tenzing_geometry,
             tenzing_object,
-            transformer=lambda series: series,
             inferential=False,
         ),
     ]
