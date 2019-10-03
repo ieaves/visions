@@ -196,7 +196,8 @@ def register_bool_relations():
 
 def register_categorical_relations():
     relations = [
-        model_relation(tenzing_categorical, tenzing_generic, inferential=False)
+        model_relation(tenzing_categorical, tenzing_generic, inferential=False),
+        model_relation(tenzing_categorical, tenzing_string, inferential=True)
     ]
     return relations
 
