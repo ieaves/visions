@@ -16,15 +16,15 @@ def register_integer_relations():
         model_relation(
             tenzing_integer,
             tenzing_float,
-            test_utils.coercion_equality_test(lambda s: s.astype(int)),
             inferential=True,
+            relationship=test_utils.coercion_equality_test(lambda s: s.astype(int)),
         ),
         model_relation(
             tenzing_integer,
             tenzing_string,
-            test_utils.coercion_test(lambda s: s.astype(float).astype("Int64")),
-            lambda s: s.astype(float).astype("Int64"),
             inferential=True,
+            relationship=test_utils.coercion_test(lambda s: s.astype(float).astype("Int64")),
+            transformer=lambda s: s.astype(float).astype("Int64"),
         ),
     ]
 
@@ -41,14 +41,14 @@ def register_float_relations():
     relations = [
         model_relation(tenzing_float, tenzing_generic, inferential=False),
         model_relation(
-            tenzing_float, tenzing_string, test_string_is_float, inferential=True
+            tenzing_float, tenzing_string, inferential=True, relationship=test_string_is_float
         ),
         model_relation(
             tenzing_float,
             tenzing_complex,
-            lambda s: all(np.imag(s.values) == 0),
-            lambda s: s.astype(float),
-            inferential=True
+            inferential=True,
+            relationship=lambda s: all(np.imag(s.values) == 0),
+            transformer=lambda s: s.astype(float),
         )
     ]
 
@@ -71,7 +71,7 @@ def register_url_relations():
             return False
 
     relations = [
-        model_relation(tenzing_url, tenzing_string, test_url, inferential=True),
+        model_relation(tenzing_url, tenzing_string, relationship=test_url, inferential=True),
         model_relation(
             tenzing_url, tenzing_object, transformer=lambda s: s, inferential=False
         ),
@@ -94,7 +94,7 @@ def register_path_relations():
             return False
 
     relations = [
-        model_relation(tenzing_path, tenzing_string, string_is_path, inferential=True),
+        model_relation(tenzing_path, tenzing_string, relationship=string_is_path, inferential=True),
         model_relation(tenzing_path, tenzing_object, inferential=False),
     ]
     return relations
@@ -105,8 +105,8 @@ def register_datetime_relations():
         model_relation(
             tenzing_datetime,
             tenzing_string,
-            test_utils.coercion_test(lambda s: pd.to_datetime(s)),
             inferential=True,
+            relationship=test_utils.coercion_test(lambda s: pd.to_datetime(s)),
         ),
         model_relation(tenzing_datetime, tenzing_object, inferential=False),
         model_relation(tenzing_datetime, tenzing_generic, inferential=False),
@@ -145,7 +145,7 @@ def register_geometry_relations():
 
     relations = [
         model_relation(
-            tenzing_geometry, tenzing_string, string_is_geometry, transformer=string_to_geometry, inferential=True
+            tenzing_geometry, tenzing_string, inferential=True, relationship=string_is_geometry, transformer=string_to_geometry
         ),
         model_relation(
             tenzing_geometry,
@@ -187,8 +187,8 @@ def register_bool_relations():
         model_relation(
             tenzing_bool,
             tenzing_string,
-            sb_relation.string_is_bool,
-            sb_relation.map_string_to_bool,
+            relationship=sb_relation.string_is_bool,
+            transformer=sb_relation.map_string_to_bool,
             inferential=True,
         ),
     ]
@@ -241,7 +241,7 @@ def register_ip_relations():
         model_relation(
             tenzing_ip,
             tenzing_string,
-            test_utils.coercion_test(lambda s: s.apply(ip_address)),
+            relationship=test_utils.coercion_test(lambda s: s.apply(ip_address)),
             inferential=True,
         ),
     ]
@@ -258,7 +258,7 @@ def register_ordinal_relations():
 
     relations = [
         model_relation(tenzing_ordinal, tenzing_categorical, inferential=False),
-        model_relation(tenzing_ordinal, tenzing_integer, is_ordinal, inferential=True)
+        model_relation(tenzing_ordinal, tenzing_integer, relationship=is_ordinal, inferential=True)
     ]
     return relations
 

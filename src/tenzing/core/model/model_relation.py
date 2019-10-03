@@ -26,7 +26,7 @@ class model_relation:
     """
 
     def __init__(
-        self, model, friend_model, relationship=None, transformer=None, inferential=None
+        self, model, friend_model, inferential: bool, relationship=None, transformer=None
     ):
         """
         Args:
