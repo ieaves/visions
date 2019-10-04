@@ -266,7 +266,7 @@ def get_series_type_map():
         "datetime": tenzing_date,
         "timedelta_series": tenzing_timedelta,
         "timedelta_series_nat": tenzing_timedelta,
-        "geometry_string_series": tenzing_geometry,
+        "geometry_string_series": tenzing_string,
         "geometry_series": tenzing_geometry,
         "path_series_linux": tenzing_path,
         "path_series_linux_str": tenzing_string,
