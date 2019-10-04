@@ -6,8 +6,8 @@ from setuptools import find_packages
 install_requires = ["numpy", "pandas==0.25.1", "networkx"] + ["shapely", "geopandas==0.6.0"]
 
 extras_requires = {
-    "type_geometry": [],
-    "type_image_path": ["imagehash"],
+    "type_geometry": ["shapely", "geopandas"],
+    "type_image_path": ["imagehash", "PIL"],
     "network_plot": ["pydot", "pygraphviz"],
     "dev_docs": ["recommonmark", "sphinx_rtd_theme", "sphinx-autodoc-typehints"],
 }
