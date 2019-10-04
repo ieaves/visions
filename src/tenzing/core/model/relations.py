@@ -267,11 +267,11 @@ def register_ordinal_relations():
         return sorted(l) == list(range(min(l), max(l) + 1))
 
     def is_ordinal_int(s):
-        unique_values = s.unique().to_list()
+        unique_values = s.unique()
         return check_consecutive(unique_values) and 2 < len(unique_values) < 10 and 1 in unique_values
 
     def is_ordinal_str(s):
-        unique_values = s.str.lower().unique().to_list()
+        unique_values = s.str.lower().unique()
         return 'a' in unique_values and check_consecutive(list(map(ord, unique_values)))
 
     relations = [
