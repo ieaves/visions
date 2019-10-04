@@ -156,6 +156,7 @@ def get_series():
             ],
             name="geometry_series",
         ),
+        # geopandas.GeoSeries([Polygon([(0, 0), (1, 1), (0, 1)]), None, Polygon([])], name='geopandas_series'),
         # Path Series
         pd.Series(
             [
