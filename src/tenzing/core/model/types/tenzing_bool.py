@@ -16,7 +16,7 @@ class tenzing_bool(tenzing_model):
         if pdt.is_categorical_dtype(series):
             return False
 
-        return pdt.is_bool_dtype(series) or series.dtype == "Bool"
+        return pdt.is_bool_dtype(series)
 
     @classmethod
     def cast_op(cls, series: pd.Series, operation=None) -> pd.Series:

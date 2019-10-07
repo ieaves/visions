@@ -45,20 +45,12 @@ class _BoolDtype(ExtensionDtype):
     na_value = None
 
     def __repr__(self):
-        sign = "U" if self.is_unsigned_integer else ""
-        return "{sign}Int{size}Dtype()".format(sign=sign, size=8 * self.itemsize)
+        """When the user calls `repr(series.dtype)`"""
+        return "BoolDtype()"
 
-    @cache_readonly
-    def is_signed_integer(self):
-        return self.kind == "i"
-
-    @cache_readonly
-    def is_unsigned_integer(self):
-        return self.kind == "u"
-
-    # TODO: Return false
     @property
-    def _is_numeric(self):
+    def _is_boolean(self) -> bool:
+        """Results in `pandas.api.types.is_boolean_dtype` recognizing this type."""
         return True
 
     @cache_readonly
@@ -68,11 +60,12 @@ class _BoolDtype(ExtensionDtype):
 
     @cache_readonly
     def kind(self):
+        """When calling `series.dtype.kind`, returns 'b'."""
         return self.numpy_dtype.kind
 
     @cache_readonly
     def itemsize(self):
-        """ Return the number of bytes in this dtype """
+        """ Return the number of bytes numpy requires to store the bool"""
         return self.numpy_dtype.itemsize
 
     @classmethod
@@ -86,7 +79,7 @@ class _BoolDtype(ExtensionDtype):
         return BoolArray
 
 
-def integer_array(values, dtype=None, copy=False):
+def boolean_array(values, dtype=None, copy=False):
     """
     Infer and return an integer array of the values.
 
@@ -154,12 +147,12 @@ def coerce_to_array(values, dtype, mask=None, copy=False):
             dtype = values.dtype
 
     if dtype is not None:
-        if isinstance(dtype, str) and (
-            dtype.startswith("Int") or dtype.startswith("UInt")
-        ):
-            # Avoid DeprecationWarning from NumPy about np.dtype("Int64")
-            # https://github.com/numpy/numpy/pull/7476
-            dtype = dtype.lower()
+        # if isinstance(dtype, str) and (
+        #     dtype.startswith("Int") or dtype.startswith("UInt")
+        # ):
+        #     # Avoid DeprecationWarning from NumPy about np.dtype("Int64")
+        #     # https://github.com/numpy/numpy/pull/7476
+        #     dtype = dtype.lower()
 
         if not issubclass(type(dtype), _BoolDtype):
             try:
@@ -214,7 +207,7 @@ def coerce_to_array(values, dtype, mask=None, copy=False):
 
     # infer dtype if needed
     if dtype is None:
-        dtype = np.dtype("int64")
+        dtype = np.dtype("bool")
     else:
         dtype = dtype.type
 
@@ -322,7 +315,7 @@ class BoolArray(ExtensionArray, ExtensionOpsMixin):
 
     @classmethod
     def _from_sequence(cls, scalars, dtype=None, copy=False):
-        return integer_array(scalars, dtype=dtype, copy=copy)
+        return boolean_array(scalars, dtype=dtype, copy=copy)
 
     @classmethod
     def _from_sequence_of_strings(cls, strings, dtype=None, copy=False):
@@ -331,7 +324,7 @@ class BoolArray(ExtensionArray, ExtensionOpsMixin):
 
     @classmethod
     def _from_factorized(cls, values, original):
-        return integer_array(values, dtype=original.dtype)
+        return boolean_array(values, dtype=original.dtype)
 
     def _formatter(self, boxed=False):
         def fmt(x):
