@@ -65,8 +65,10 @@ def check_graph_constraints(relation_graph: nx.DiGraph, nodes: set) -> None:
 
     orphaned_nodes = nodes - set(relation_graph.nodes)
     if orphaned_nodes:
-        warnings.warn(f"{orphaned_nodes} were isolates in the type relation map and consequently\
-                      orphaned. Please add some mapping to the orphaned nodes.")
+        warnings.warn(
+            f"{orphaned_nodes} were isolates in the type relation map and consequently\
+                      orphaned. Please add some mapping to the orphaned nodes."
+        )
 
     cycles = list(nx.simple_cycles(relation_graph))
     if len(cycles) > 0:
@@ -120,10 +122,12 @@ def get_type_inference_path(
     return path, series
 
 
-def infer_type(base_type: Type[VisionsBaseType],
-               series: pd.Series,
-               G: nx.DiGraph,
-               sample_size: int = 10) -> Type[VisionsBaseType]:
+def infer_type(
+    base_type: Type[VisionsBaseType],
+    series: pd.Series,
+    G: nx.DiGraph,
+    sample_size: int = 10,
+) -> Type[VisionsBaseType]:
 
     if sample_size >= len(series):
         path, _ = get_type_inference_path(base_type, series, G)

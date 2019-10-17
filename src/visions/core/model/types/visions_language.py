@@ -1,19 +1,21 @@
 import pandas.api.types as pdt
 import pandas as pd
 import os
-import langdetect
 
 from visions.core.model.model_relation import relation_conf
 from visions.core.model.models import VisionsBaseType
-from visions.core.model.types import visions_string
 
 
 def get_language(series: pd.Series) -> str:
-    words = ' '.join(series.values)
+    import langdetect
+
+    words = " ".join(series.values)
     return langdetect.detect(words)
+
 
 def is_language(series: pd.Series):
     return all(s.isalpha() for s in series)
+
 
 class visions_language(VisionsBaseType):
     """
@@ -21,10 +23,14 @@ class visions_language(VisionsBaseType):
 
     @classmethod
     def get_relations(cls) -> dict:
+        from visions.core.model.types import visions_string
+
         return {visions_string: relation_conf(inferential=False)}
 
     @classmethod
     def contains_op(cls, series: pd.Series) -> bool:
+        from visions.core.model.types import visions_string
+
         if series not in visions_string:
             return False
 
@@ -35,6 +41,7 @@ class visions_language_en(VisionsBaseType):
     @classmethod
     def get_relations(cls) -> dict:
         from visions.core.model.types import visions_generic
+
         return {visions_language: relation_conf(inferential=False)}
 
     @classmethod
@@ -42,13 +49,14 @@ class visions_language_en(VisionsBaseType):
         if series not in visions_language:
             return False
 
-        return get_language(series.dropna()) == 'en'
+        return get_language(series.dropna()) == "en"
 
 
 class visions_language_nl(VisionsBaseType):
     @classmethod
     def get_relations(cls) -> dict:
         from visions.core.model.types import visions_generic
+
         return {visions_language: relation_conf(inferential=False)}
 
     @classmethod
@@ -56,7 +64,7 @@ class visions_language_nl(VisionsBaseType):
         if series not in visions_language:
             return False
 
-        return get_language(series.dropna()) == 'nl'
+        return get_language(series.dropna()) == "nl"
 
 
 """
