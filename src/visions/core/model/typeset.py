@@ -267,7 +267,7 @@ class VisionTypeset(object):
     def __subtract__(self, other):
         if issubclass(other.__class__, VisionTypeset):
             other_types = set(other.types)
-        elif issubclass(other, vision_model):
+        elif issubclass(other, VisionsBaseType):
             other_types = {other}
         else:
             raise NotImplementedError(
