@@ -1,33 +1,53 @@
-.PHONY: docs test pypi_package install all
+.PHONY: docs test pypi_package install all type_check help
+# Makefile structure adopted from cookiecutter data science
 
+#################################################################################
+# GLOBALS                                                                       #
+#################################################################################
+
+
+#################################################################################
+# COMMANDS                                                                      #
+#################################################################################
+
+## Build package documentation
 docs:
 	cd docsrc/ && make github
 	ECHO "Docs updated!"
 
+## Run unit tests
 test:
 	pytest tests/
 	ECHO "Tests completed!"
 
+## Install and uploade visions package
 pypi_package:
 	make install
 	python setup.py sdist
 	twine upload dist/*
 	ECHO "PyPi package completed"
 
+## Automatically lint / format code
 lint:
 	black .
 
-type_checking:
+## Run type checking
+type_check:
 	mypy .
 
+## Install package in edit mode
 install:
 	pip install -e .
 
+## Run all setup commands
 all:
 	make lint
 	make install
 	make docs
+	make type_check
 	make test
+
+
 
 #################################################################################
 # Self Documenting Commands                                                     #
@@ -50,7 +70,6 @@ all:
 # 	* print line
 # Separate expressions are necessary because labels cannot be delimited by
 # semicolon; see <http://stackoverflow.com/a/11799865/1968>
-.PHONY: help
 help:
 	@echo "$$(tput bold)Available rules:$$(tput sgr0)"
 	@echo
@@ -87,5 +106,4 @@ help:
 			printf "%s ", words[i]; \
 		} \
 		printf "\n"; \
-	}' \
-	| more $(shell test $(shell uname) = Darwin && echo '--no-init --raw-control-chars')
+	}'

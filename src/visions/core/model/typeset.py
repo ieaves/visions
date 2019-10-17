@@ -1,5 +1,5 @@
 import warnings
-from typing import Type, Tuple, List
+from typing import Type, Tuple, List, Iterable
 
 import pandas as pd
 import networkx as nx
@@ -168,7 +168,8 @@ class VisionTypeset(object):
         relation_graph: ...
     """
 
-    def __init__(self, types: set, build=True):
+    # TODO: Can we indicate covariance of types such that it's an Iterable[VisionsBaseType]
+    def __init__(self, types: Iterable, build=True):
         """
 
         Args:
@@ -177,7 +178,7 @@ class VisionTypeset(object):
         # self.column_type_map = {}
 
         self.relations = {}
-        for node in types:
+        for node in set(types):
             self.relations[node] = node.get_relations()
         self._types = types
         if build:
@@ -252,6 +253,18 @@ class VisionTypeset(object):
             plt.imshow(img)
 
     def __add__(self, other):
+        # TODO: adding iterables of types?
+        if issubclass(other.__class__, VisionTypeset):
+            other_types = set(other.types)
+        elif issubclass(other, VisionsBaseType):
+            other_types = {other}
+        else:
+            raise NotImplementedError(
+                f"Typeset addition not implemented for type {type(other)}"
+            )
+        return VisionTypeset(self.types | other_types)
+
+    def __subtract__(self, other):
         if issubclass(other.__class__, VisionTypeset):
             other_types = set(other.types)
         elif issubclass(other, vision_model):
@@ -260,7 +273,7 @@ class VisionTypeset(object):
             raise NotImplementedError(
                 f"Typeset addition not implemented for type {type(other)}"
             )
-        return VisionTypeset(self.types | other_types)
+        return VisionTypeset(self.types - other_types)
 
     def __repr__(self):
         return self.__class__.__name__
