@@ -13,7 +13,11 @@ help:
 
 github:
 	@make html
+	@rm -r ../docs/
+	@mkdir ../docs
 	@cp -a build/html/. ../docs
+	@rm -r build
+	@rm -r source/visions/_autosummary
 
 .PHONY: help Makefile
 
