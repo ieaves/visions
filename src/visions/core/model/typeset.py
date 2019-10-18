@@ -268,15 +268,16 @@ class VisionTypeset(object):
             )
         return VisionTypeset(self.types | other_types)
 
-    def __subtract__(self, other):
+    def __sub__(self, other):
         if issubclass(other.__class__, VisionTypeset):
             other_types = set(other.types)
         elif issubclass(other, VisionsBaseType):
             other_types = {other}
         else:
             raise NotImplementedError(
-                f"Typeset addition not implemented for type {type(other)}"
+                f"Typeset subtraction not implemented for type {type(other)}"
             )
+
         return VisionTypeset(self.types - other_types)
 
     def __repr__(self):
