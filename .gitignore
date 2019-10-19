@@ -110,3 +110,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 !/docsrc/build/
+
+# OSX Trash
+.DS_Store

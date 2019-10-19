@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>visions.core.model.model_relation &mdash; package 0.1.0 documentation</title>
+  <title>visions.core.model.model_relation &mdash; visions 0.1.0 documentation</title>
   
 
   
@@ -48,7 +48,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home"> package
+            <a href="../../../../index.html" class="icon icon-home"> visions
           
 
           
@@ -82,11 +82,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../visions/introduction.html">Visions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../visions/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../visions/getting_started.html">Understanding Visions Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../visions/typesets.html">Typesets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../visions/extending.html">Extending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visions/practitioner.html">Practitioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visions/thinker.html">Thinker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visions/creator.html">Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visions/api.html">API</a></li>
 </ul>
 
             
@@ -101,7 +100,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">package</a>
+          <a href="../../../../index.html">visions</a>
         
       </nav>
 
@@ -162,7 +161,7 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="model_relation"><a class="viewcode-back" href="../../../../visions/_autosummary/visions.core.model.model_relation.html#visions.core.model.model_relation">[docs]</a><span class="k">class</span> <span class="nc">model_relation</span><span class="p">:</span>
+<div class="viewcode-block" id="model_relation"><a class="viewcode-back" href="../../../../visions/api/_autosummary/visions.core.model.model_relation.html#visions.core.model.model_relation">[docs]</a><span class="k">class</span> <span class="nc">model_relation</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Relationship encoder between implementations of :class:`visions.core.models.VisionsBaseType`</span>
 
 <span class="sd">    Defines a one to one relationship between two VisionsBaseType implementations,</span>
@@ -186,7 +185,7 @@
 <span class="sd">        pd.Series([1, 2, 3])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="model_relation.__init__"><a class="viewcode-back" href="../../../../visions/_autosummary/visions.core.model.model_relation.html#visions.core.model.model_relation.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="model_relation.__init__"><a class="viewcode-back" href="../../../../visions/api/_autosummary/visions.core.model.model_relation.html#visions.core.model.model_relation.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">friend_model</span><span class="p">,</span>
@@ -213,7 +212,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span> <span class="o">=</span> <span class="n">transformer</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">transformer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">relationship</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span> <span class="s2">&quot;noninferential relations may not have transformer or relations&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;noninferential relations may not have transformer or relations&quot;</span>
+                <span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">relationship</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="fm">__contains__</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span></div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>visions.core.model.typesets &mdash; package 0.1.0 documentation</title>
+  <title>visions.core.model.typesets &mdash; visions 0.1.0 documentation</title>
   
 
   
@@ -48,7 +48,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home"> package
+            <a href="../../../../index.html" class="icon icon-home"> visions
           
 
           
@@ -82,11 +82,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../visions/introduction.html">Visions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../visions/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../visions/getting_started.html">Understanding Visions Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../visions/typesets.html">Typesets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../visions/extending.html">Extending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visions/practitioner.html">Practitioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visions/thinker.html">Thinker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visions/creator.html">Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visions/api.html">API</a></li>
 </ul>
 
             
@@ -101,7 +100,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">package</a>
+          <a href="../../../../index.html">visions</a>
         
       </nav>
 
@@ -154,7 +153,7 @@
 <span class="kn">from</span> <span class="nn">visions.core.model.types</span> <span class="k">import</span> <span class="o">*</span>
 
 
-<div class="viewcode-block" id="visions_standard_set"><a class="viewcode-back" href="../../../../visions/_autosummary/visions.core.model.typesets.visions_standard_set.html#visions.core.model.typesets.visions_standard_set">[docs]</a><span class="k">class</span> <span class="nc">visions_standard_set</span><span class="p">(</span><span class="n">VisionTypeset</span><span class="p">):</span>
+<div class="viewcode-block" id="visions_standard_set"><a class="viewcode-back" href="../../../../visions/api/_autosummary/visions.core.model.typesets.visions_standard_set.html#visions.core.model.typesets.visions_standard_set">[docs]</a><span class="k">class</span> <span class="nc">visions_standard_set</span><span class="p">(</span><span class="n">VisionTypeset</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;The standard visions typesets</span>
 
 <span class="sd">    Includes support for the following types:</span>
@@ -171,7 +170,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="visions_standard_set.__init__"><a class="viewcode-back" href="../../../../visions/_autosummary/visions.core.model.typesets.visions_standard_set.html#visions.core.model.typesets.visions_standard_set.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="visions_standard_set.__init__"><a class="viewcode-back" href="../../../../visions/api/_autosummary/visions.core.model.typesets.visions_standard_set.html#visions.core.model.typesets.visions_standard_set.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">visions_object</span><span class="p">,</span>
             <span class="n">visions_bool</span><span class="p">,</span>
@@ -186,7 +185,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">types</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="visions_geometry_set"><a class="viewcode-back" href="../../../../visions/_autosummary/visions.core.model.typesets.visions_geometry_set.html#visions.core.model.typesets.visions_geometry_set">[docs]</a><span class="k">class</span> <span class="nc">visions_geometry_set</span><span class="p">(</span><span class="n">VisionTypeset</span><span class="p">):</span>
+<div class="viewcode-block" id="visions_geometry_set"><a class="viewcode-back" href="../../../../visions/api/_autosummary/visions.core.model.typesets.visions_geometry_set.html#visions.core.model.typesets.visions_geometry_set">[docs]</a><span class="k">class</span> <span class="nc">visions_geometry_set</span><span class="p">(</span><span class="n">VisionTypeset</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Standard vision typeset with shapely geometry support</span>
 
 <span class="sd">    Includes support for the following types:</span>
@@ -204,7 +203,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="visions_geometry_set.__init__"><a class="viewcode-back" href="../../../../visions/_autosummary/visions.core.model.typesets.visions_geometry_set.html#visions.core.model.typesets.visions_geometry_set.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="visions_geometry_set.__init__"><a class="viewcode-back" href="../../../../visions/api/_autosummary/visions.core.model.typesets.visions_geometry_set.html#visions.core.model.typesets.visions_geometry_set.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">visions_bool</span><span class="p">,</span>
             <span class="n">visions_float</span><span class="p">,</span>
@@ -220,7 +219,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">types</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="visions_complete_set"><a class="viewcode-back" href="../../../../visions/_autosummary/visions.core.model.typesets.visions_complete_set.html#visions.core.model.typesets.visions_complete_set">[docs]</a><span class="k">class</span> <span class="nc">visions_complete_set</span><span class="p">(</span><span class="n">VisionTypeset</span><span class="p">):</span>
+<div class="viewcode-block" id="visions_complete_set"><a class="viewcode-back" href="../../../../visions/api/_autosummary/visions.core.model.typesets.visions_complete_set.html#visions.core.model.typesets.visions_complete_set">[docs]</a><span class="k">class</span> <span class="nc">visions_complete_set</span><span class="p">(</span><span class="n">VisionTypeset</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Complete vision typeset with all supported types</span>
 
 <span class="sd">    Includes support for the following types:</span>
@@ -245,7 +244,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="visions_complete_set.__init__"><a class="viewcode-back" href="../../../../visions/_autosummary/visions.core.model.typesets.visions_complete_set.html#visions.core.model.typesets.visions_complete_set.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="visions_complete_set.__init__"><a class="viewcode-back" href="../../../../visions/api/_autosummary/visions.core.model.typesets.visions_complete_set.html#visions.core.model.typesets.visions_complete_set.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">visions_bool</span><span class="p">,</span>
             <span class="n">visions_float</span><span class="p">,</span>

@@ -7,10 +7,12 @@ Visions
    :alt: Jeanne D'Arc, Image in the public domain
 
 
-::
+..
 
-   And these visions of data types, they kept us up past the dawn
 
+    And these visions of data types, they kept us up past the dawn.
+
+    -- An Avantgardistic Data Scientist
 
 Why
 ---
@@ -23,11 +25,15 @@ Visions provides an extensible suite of tools to support common data analysis op
 
 * type inference on unknown data
 * automated data summarization
+
 * improved memory handling (up to 25% RAM reduction)
 
-References
-----------
 
-- The Python data model (`docs <https://docs.python.org/3/reference/datamodel.html>`_) (`diagram <https://en.wikipedia.org/wiki/Data_type#/media/File:Python_3._The_standard_type_hierarchy.png>`_)
-- The Numpy data model (`docs <https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.scalars.html>`_) (`diagram <https://docs.scipy.org/doc/numpy-1.13.0/_images/dtype-hierarchy.png>`_)
-- The Pandas data model (`docs <https://pandas.pydata.org/pandas-docs/stable/getting_started/basics.html#dtypes>`_) (`diagram <https://pbpython.com/images/pandas_dtypes.png>`_)
+How to navigate
+---------------
+
+This documentation is setup with the following audiences in mind (you can decide which one you are at any moment):
+
+- The practitioner: Providing essential information to get started quickly
+- The thinker: Providing a deeper understanding of concepts behind `visions`
+- The creator: Providing ways to extend for your use case or contribute to the community
