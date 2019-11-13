@@ -238,21 +238,20 @@ class VisionsTypeset(object):
 
     Attributes:
         types: The collection of vision types which are derived either from a base_type or themselves
+        base_graph: the graph with relations to parent types
+        relation_graph: the graph with relations to the parent types and mapping relations
     """
 
-    def __init__(self, types: Iterable):
+    def __init__(self, types: set):
         """
         Args:
-            types: an iterable of types
-            build: Construct the graph, set to false when
+            types: a set of types
         """
         if not isinstance(types, Iterable):
             raise ValueError("types should be iterable")
 
-        self.relation_graph, self.base_graph = build_graph(
-            set(types) | {visions_generic}
-        )
-        self.types = frozenset(self.relation_graph.nodes)
+        self.relation_graph, self.base_graph = build_graph(set(types) | {visions_generic})
+        self.types = set(self.relation_graph.nodes)
 
     def detect_series_type(self, series: pd.Series) -> Type[VisionsBaseType]:
         """Get the series type (without casting).

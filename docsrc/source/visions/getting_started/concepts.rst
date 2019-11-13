@@ -21,10 +21,10 @@ Typeset
 
 A typeset is literally a set of types and the relationships between them.
 You can use typesets to specify different type systems.
-Intuitively, a typeset is comparable to a namespace for code or a virtual environment for dependencies.
+The typeset contains types, comparable to a namespace for code or a virtual environment for dependencies.
 
 Relational mapping
 ------------------
 
-A relational mapping represents the relationships between types. Visions creates a graph
-of these relationships within a typeset as a mechanism to perform type inference od data.
+A relational mapping represents the relationships between types.
+Visions creates a graph of these relationships within a typeset as a mechanism to perform type inference on data.
