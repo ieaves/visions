@@ -1,6 +1,9 @@
 from abc import abstractmethod, ABCMeta
+from typing import List, Type
 
 import pandas as pd
+
+from visions.core.model.relations import Relation
 
 
 class VisionsBaseTypeMeta(ABCMeta):
@@ -26,7 +29,7 @@ class VisionsBaseType(metaclass=VisionsBaseTypeMeta):
 
     @classmethod
     @abstractmethod
-    def get_relations(cls) -> dict:
+    def get_relations(cls) -> List[Type[Relation]]:
         raise NotImplementedError
 
     @classmethod
