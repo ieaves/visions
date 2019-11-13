@@ -1,7 +1,8 @@
 import pandas.api.types as pdt
 import pandas as pd
+from typing import List, Type
 
-from visions.core.model.relations import IdentityRelation, InferenceRelation
+from visions.core.model.relations import IdentityRelation, InferenceRelation, Relation
 from visions.core.model.type import VisionsBaseType
 
 
@@ -28,7 +29,7 @@ class visions_ordinal(VisionsBaseType):
     """
 
     @classmethod
-    def get_relations(cls):
+    def get_relations(cls) -> List[Type[Relation]]:
         return _get_relations()
 
     @classmethod
