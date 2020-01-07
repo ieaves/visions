@@ -1,0 +1,19 @@
+sudo: required
+dist: xenial
+language: python
+cache: pip
+python:
+  - "3.6"
+#  - "3.7"
+#  - "3.8"
+
+install:
+  - pip install -r requirements.txt
+  - pip install -e .
+
+script:
+#  - pytest --cov=. tests/
+  - pytest --mypy --black tests/
+
+#after_success:
+#  - codecov -F $TEST
